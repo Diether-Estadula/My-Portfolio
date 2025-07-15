@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const errorMessage = document.getElementById('error-message');
     
       try {
-        const response = await fetch("https://formsubmit.co/dietherestadula456@gmail.com", {
+        const response = await fetch("https://formsubmit.co/ajax/dietherestadula456@gmail.com", {
           method: "POST",
           body: formData,
           headers: {
