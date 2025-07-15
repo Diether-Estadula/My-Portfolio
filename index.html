@@ -466,7 +466,8 @@
         <div class="d-flex justify-content-center" data-aos="fade-in">
           <form id="contactForm" class="php-email-form">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://diether-estadula.github.io/My-Portfolio/">
+            <input type="hidden" name="_subject" value="New message from portfolio">
+            <input type="hidden" name="_template" value="table">
 
             <div class="row mb-3">
               <input type="text" name="name" id="name" placeholder="Full Name" required>
@@ -484,10 +485,11 @@
               <textarea name="details" id="details" placeholder="Details of your project" required></textarea>
             </div>
             <div class="col-md-12 text-center">
-              <!-- <div class="loading">Loading</div>
-              <div class="error-message"></div>
+              <div class="loading">Loading</div>
+              <!-- <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div> -->
-              <div id="statusMessage" style="margin-top: 10px;"></div>
+              <div class="error-message" id="error-message"></div>
+              <div class="sent-message" id="sent-message"></div>
 
               <button class="submitBtn fw-bold" type="submit" name="submitBtn" id="submitBtn">SUBMIT</button>
             </div>
@@ -562,7 +564,8 @@
       
         const form = e.target;
         const formData = new FormData(form);
-        const status = document.getElementById('statusMessage');
+        const sentMessage = document.getElementById('sent-message');
+        const errorMessage = document.getElementById('error-message');
       
         try {
           const response = await fetch("https://formsubmit.co/dietherestadula456@gmail.com", {
@@ -574,16 +577,13 @@
           });
       
           if (response.ok) {
-            status.textContent = "✅ Your message has been sent successfully!";
-            status.style.color = "green";
+            sentMessage.textContent = "Your message has been sent successfully!";
             form.reset();
           } else {
-            status.textContent = "❌ There was a problem sending your message.";
-            status.style.color = "red";
+            errorMessage.textContent = "There was a problem sending your message.";
           }
         } catch (error) {
-          status.textContent = "❌ Something went wrong. Please try again later.";
-          status.style.color = "red";
+          errorMessage.textContent = "Something went wrong. Please try again later.";
         }
       });
       </script>
