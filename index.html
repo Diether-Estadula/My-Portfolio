@@ -557,7 +557,7 @@
     <!-- Main JS -->
     <script src="assets/js/index.js"></script>
 
-    <script src="assets/js/php-email-form/validate.js"></script>
+    <!-- <script src="assets/js/php-email-form/validate.js"></script> -->
     <script>
       document.getElementById('contactForm').addEventListener('submit', async function(e) {
         e.preventDefault(); // stop default form submission
@@ -578,12 +578,15 @@
       
           if (response.ok) {
             sentMessage.textContent = "Your message has been sent successfully!";
+            sentMessage.classList.add('d-block');
             form.reset();
           } else {
             errorMessage.textContent = "There was a problem sending your message.";
+            errorMessage.classList.add('d-block');
           }
         } catch (error) {
           errorMessage.textContent = "Something went wrong. Please try again later.";
+          errorMessage.classList.add('d-block');
         }
       });
       </script>
