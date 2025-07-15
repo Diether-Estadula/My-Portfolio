@@ -73,5 +73,36 @@ document.addEventListener('DOMContentLoaded', function () {
     closeBtn.addEventListener('click', () => {
       navbar.classList.remove('show');
     });
+
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault(); // stop default form submission
+    
+      const form = e.target;
+      const formData = new FormData(form);
+      const sentMessage = document.getElementById('sent-message');
+      const errorMessage = document.getElementById('error-message');
+    
+      try {
+        const response = await fetch("https://formsubmit.co/dietherestadula456@gmail.com", {
+          method: "POST",
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+    
+        if (response.ok) {
+          sentMessage.textContent = "Your message has been sent successfully!";
+          sentMessage.classList.add('d-block');
+          form.reset();
+        } else {
+          errorMessage.textContent = "There was a problem sending your message.";
+          errorMessage.classList.add('d-block');
+        }
+      } catch (error) {
+        errorMessage.textContent = "Something went wrong. Please try again later.";
+        errorMessage.classList.add('d-block');
+      }
+    });
 });
   
